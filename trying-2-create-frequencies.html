@@ -1,0 +1,70 @@
+<select id="freq">
+  <option>396</option>
+  <option>417</option>
+  <option>528</option>
+  <option>639</option>
+  <option>741</option>
+  <option>852</option>
+  <option>963</option>
+</select>
+<button id='startOsc'>Start</button>
+<button id='stopOsc'>Stop</button>
+<br />
+<button id='left'>Left</button>
+<button id='middle'>Middle</button>
+<button id='right'>Right</button>
+<script type="text/javascript">
+  // create web audio api context
+  var audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+  // Create a stereo panner
+  var panNode = audioCtx.createStereoPanner();
+  // create Oscillator node
+  var oscillator = audioCtx.createOscillator();
+
+  // adding action to change event
+  document.getElementById('freq').addEventListener("change", function() {
+    generateSoundFreq(this.value);
+  });
+
+  document.getElementById('startOsc').addEventListener("click", function() {
+    starting();
+  });
+
+  document.getElementById('stopOsc').addEventListener("click", function() {
+    stoping();
+  });
+
+  // stereo
+  document.getElementById('left').addEventListener("click", function() {
+    panNode.pan.value = -1;
+  });
+
+  document.getElementById('middle').addEventListener("click", function() {
+    panNode.pan.value = 0;
+  });
+
+  document.getElementById('right').addEventListener("click", function() {
+    panNode.pan.value = 1;
+  });
+
+  (function() {
+    oscillator.type = 'square';
+    generateSoundFreq(396);
+    panNode.pan.value = 0;
+    oscillator.connect(panNode);
+    oscillator.start();
+  })();
+
+  function generateSoundFreq(dimension) {
+    oscillator.frequency.value = dimension;
+  }
+
+  function starting() {
+    // console.log(oscillator);
+    panNode.connect(audioCtx.destination);
+  }
+
+  function stoping() {
+    panNode.disconnect(audioCtx.destination);
+  }
+</script>
