@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Wavetation';
+  src:  url('fonts/Wavetation.eot?1ws0ji');
+  src:  url('fonts/Wavetation.eot?1ws0ji#iefix') format('embedded-opentype'),
+    url('fonts/Wavetation.ttf?1ws0ji') format('truetype'),
+    url('fonts/Wavetation.woff?1ws0ji') format('woff'),
+    url('fonts/Wavetation.svg?1ws0ji#Wavetation') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Wavetation' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-btn-keybroad:before {
+  content: "\e900";
+}
+.icon-btn-plus:before {
+  content: "\e901";
+}
+.icon-btn-sawtooth-wave:before {
+  content: "\e902";
+}
+.icon-btn-sine-wave:before {
+  content: "\e903";
+}
+.icon-btn-square-wave:before {
+  content: "\e904";
+}
+.icon-btn-triangular-wave:before {
+  content: "\e905";
+}
+
+.waveform-btns-box {
+  text-align: center;
+  padding: 0.5em;
+}
